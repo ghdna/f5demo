@@ -1,0 +1,54 @@
+{
+  "Services": {
+    "backend": {
+      "Args": [
+        "npm",
+        "start"
+      ],
+      "Image": "garora/f5demo@sha256:d205b1a98cfa8d31480cab19311679fdedb59f93dcc7c7f88ae9d91221111784",
+      "Networks": [
+        "default"
+      ],
+      "Ports": [
+        {
+          "Port": 8000,
+          "Protocol": "tcp"
+        }
+      ]
+    },
+    "mongo": {
+      "Env": [
+        "MONGO_INITDB_DATABASE=f5",
+        "MONGO_INITDB_ROOT_USERNAME=root",
+        "MONGO_INITDB_ROOT_PASSWORD=example"
+      ],
+      "Image": "mongo@sha256:1a9478d8188d6be31dd2e8de076d402edf20446e54933aad7ff49f5b457d486c",
+      "Networks": [
+        "default"
+      ],
+      "Ports": [
+        {
+          "Port": 27017,
+          "Protocol": "tcp"
+        }
+      ]
+    },
+    "web": {
+      "Args": [
+        "npm",
+        "start"
+      ],
+      "Image": "garora/f5demo@sha256:ed2fc25268b34e62e9215c5f9fe0be90de7f2b8df65d22a1711ca8dc63aaeaa7",
+      "Networks": [
+        "default"
+      ],
+      "Ports": [
+        {
+          "Port": 4000,
+          "Protocol": "tcp"
+        }
+      ]
+    }
+  },
+  "Version": "0.1"
+}

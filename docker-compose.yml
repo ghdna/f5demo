@@ -1,0 +1,32 @@
+version: "3"
+services:
+    backend:
+        build: ./backend
+        image: garora/f5demo:backend
+        container_name: backend
+        ports:
+            - 8000
+        #volumes:
+        #    - ./backend:/usr/src/app
+        command: npm start
+
+    web:
+        build: ./web
+        image: garora/f5demo:web
+        container_name: web
+        ports:
+            - 4000:4000
+        #volumes:
+        #    - ./web:/app/web
+        command: npm start
+
+    mongo:
+        image: mongo
+        container_name: mongo
+        restart: always
+        ports:
+            - 27017
+        environment:
+            MONGO_INITDB_DATABASE: f5
+            MONGO_INITDB_ROOT_USERNAME: root
+            MONGO_INITDB_ROOT_PASSWORD: example
